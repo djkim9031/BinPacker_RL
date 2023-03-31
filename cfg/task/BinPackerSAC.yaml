@@ -1,0 +1,8 @@
+# used to create the object
+defaults:
+  - BinPacker
+  - _self_
+
+# if given, will override the device setting in gym.
+env:
+  numEnvs: ${resolve_default:512,${...num_envs}}
