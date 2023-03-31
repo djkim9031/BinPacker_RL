@@ -39,4 +39,4 @@ torchrun --standalone --nnodes=1 nproc_per_node=3 train.py multi_gpu=True task=B
 
 ## Work in Progress
 This is still largely a work in progress. The full integration of BinPacker custom environment logic, physics sim, PPO/SAC integration to NVIDIA's Isaac Gym is complete. <br/>
-However, still the optimal stacking policy is not found. I believe this is largely because vanilla experience replay buffer for off-policy (SAC) is not suitable for this environment. And also, reward functions are currently quite simple. More sophisticated reward function/model needs to be implemented. RLHF is also possible way forward
+However, still the optimal stacking policy is not found. I believe this is largely because the vanilla experience replay buffer for off-policy (SAC) is not suitable for this environment. And also, the reward functions are currently quite simple. More sophisticated reward function/model needs to be implemented. RLHF is also possible way forward
