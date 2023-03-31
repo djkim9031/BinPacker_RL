@@ -11,7 +11,7 @@ Also the core modules and functionalities are from NVIDIA's Isaac Gym [repo](htt
 
 ## How to use
 IsaacGym is only available on Ubuntu18.06, 20.04 and above at the moment. <br/>
-I've implemented similar 3D bin packer logic using Stable Baselines3 for windows/Mac/or Linux, too. Please refer to this if you don't have Linux machine.<br/>
+I've implemented similar 3D bin packer logic using Stable Baselines3 for windows/Mac/or Linux, too. Please refer to the folder "bin_packer_sb3" [here](https://github.com/djkim9031/BinPacker_RL/tree/main/bin_packer_sb3) if you don't have Linux machine.<br/>
 Stable Baselines3 supports vectorized environments, but the performance doens't seem to be as good.
 <br/>
 I highly recommend using CUDA for training/testing. Also when training, please activate wandb for real-time monitoring <br/>
