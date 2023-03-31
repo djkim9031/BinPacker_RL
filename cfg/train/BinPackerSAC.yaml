@@ -1,0 +1,79 @@
+params:  
+
+  seed: ${...seed}
+
+  algo:
+    name: sac
+
+  model:
+    name: soft_actor_critic #same
+
+  network:
+    name: BinPacker_SAC
+    separate: True
+    multidim: False
+    space:
+      continuous:
+    backbone:
+      type : conv1d
+      convs : 
+         [ 
+           {
+            filters : 5,
+            kernel_size: 6,
+            strides: 6,
+            padding: 0
+           },
+           {
+            filters : 10,
+            kernel_size: 6,
+            strides: 1,
+            padding: 0
+           },
+           {
+            filters : 30,
+            kernel_size: 6,
+            strides: 1,
+            padding: 0
+           }
+         ]
+      activation : relu
+      normalization : batch_norm
+      initializer:
+        name: default
+    mlp:
+      units: [512, 512, 256, 256, 128, 128, 64, 64]
+      activation: relu
+      initializer:
+        name: default
+      normalization : None
+      d2rl: True
+    log_std_bounds: [-7, 2]
+
+  load_checkpoint: False
+  load_path: nn/BinPacker.pth
+
+  config:
+    name: ${resolve_default:BinPackerSAC,${....experiment}}
+    env_name: rlgpu
+    multi_gpu: ${....multi_gpu}
+    normalize_input: False
+    reward_shaper:
+      scale_value: 1.0
+    max_epochs: 1000000
+    num_steps_per_episode: 14
+    save_best_after: 100
+    save_frequency: 1000
+    gamma: 1.0
+    init_alpha: 1.0
+    alpha_lr: 0.005
+    actor_lr: 0.0005
+    critic_lr: 0.0005
+    critic_tau: 0.005
+    batch_size: 4096
+    learnable_temperature: true
+    num_seed_steps: 1
+    num_warmup_steps: 2
+    replay_buffer_size: 1000000
+    num_actors: ${....task.env.numEnvs}
+    permute: False
